@@ -1,13 +1,13 @@
 <div class="row text-center">
     <div class="col-md-4">
         <div class="btn-group">
-            <div class="btn btn-dark" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+            <div class="btn btn-dark" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
                 Previous
             </div>
             <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
                 Today
             </div>
-            <div class="btn btn-dark" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+            <div class="btn btn-dark" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
                 Next
             </div>
         </div>
@@ -29,7 +29,7 @@
 </div>
 <br />
 <div [ngSwitch]="view">
-    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events" [refresh]="refresh" (dayClicked)="dayClicked($event.day)" (eventTimesChanged)="eventTimesChanged($event) ">
+    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events" [refresh]="refresh" (dayClicked)="dayClicked($event.day)" (eventTimesChanged)="eventTimesChanged($event)">
 
     </mwl-calendar-month-view>
 

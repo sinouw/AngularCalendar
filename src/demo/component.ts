@@ -20,7 +20,8 @@ import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
   CalendarView,
-  CalendarUtils
+  CalendarUtils,
+  CalendarMonthViewDay
 } from 'angular-calendar';
 import { GetMonthViewArgs, MonthView } from 'calendar-utils';
 
@@ -38,8 +39,6 @@ const colors: any = {
     secondary: '#FDF1BA'
   }
 };
-
-
 
 @Component({
   selector: 'mwl-demo-component',
@@ -62,10 +61,6 @@ export class DemoComponent {
 
   constructor() {}
 
-
-  
-
-
   events: CalendarEvent[] = [
     {
       start: addHours(startOfDay(new Date()), 2),
@@ -83,10 +78,11 @@ export class DemoComponent {
 
   dayClicked({ date }: { date: Date }): void {
     this.clickedDate = date
- console.log(this.clickedDate);
- 
-      this.viewDate = date;
-
+    if (this.view === CalendarView.Month) 
+    {
+      this.viewDate = date; 
+      this.view = CalendarView.Week;
+    }   
   }
 
   eventTimesChanged({
@@ -132,5 +128,7 @@ export class DemoComponent {
   setView(view: CalendarView) {
     this.view = view;
   }
+
+
 
 }
